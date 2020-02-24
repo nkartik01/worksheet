@@ -1,0 +1,13 @@
+import numpy as np
+from PIL import ImageTk
+import PIL.Image
+def removebg(img):
+  fp=open(img,'rb')
+  im=PIL.Image.open(fp)
+	im=im.convert('RGBA')
+  data=np.array(im)
+  for i in range(len(data)):
+    for j in range(len[data[0]]):
+      if(data[i][j][0]>200 and data[i][j][1]>200 and data[i][j][2]>200):
+        data[i][j][3]=0
+  return(PIL.Image.fromarray(data))
